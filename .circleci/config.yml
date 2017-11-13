@@ -10,7 +10,7 @@ jobs:
           key: deps1-{{ .Branch }}
       - run:
           command: |
-            virtualenv venv
+            python3 -m venv venv
             . venv/bin/activate
             pip install tensorflow==1.4.0
             pip install -e .[develop]
