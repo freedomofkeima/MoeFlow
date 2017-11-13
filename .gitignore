@@ -1,0 +1,26 @@
+# Python
+*.pyc
+.cache/
+/build
+/cover
+/dist
+/venv
+
+# Packages
+*.egg
+*.egg-info
+
+# Unit test / coverage reports
+.coverage
+coverage.xml
+.tox
+nosetests.xml
+
+# Others
+*~
+*.swp
+*.DS_Store
+*.idea/
+
+# Sphinx docs
+docs/_build*

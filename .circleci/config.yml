@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circleci-moeflow
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}
+      - run:
+          command: |
+            virtualenv venv
+            . venv/bin/activate
+            python setup.py develop
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "setup.py" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            . venv/bin/activate
+            mkdir -p "${CIRCLE_WORKING_DIRECTORY}/results/junit/"
+            pytest --junitxml="results/junit/results-${CIRCLE_NODE_INDEX}.xml" --verbose --cov=moeflow --cov-report term-missing tests
+      - store_artifacts:
+          path: "results"
