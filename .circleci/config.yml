@@ -12,7 +12,8 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate
-            python setup.py develop
+            pip install tensorflow==1.4.0
+            pip install -e .[develop]
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "setup.py" }}
           paths:
@@ -20,6 +21,7 @@ jobs:
       - run:
           command: |
             . venv/bin/activate
+            pip install -e .[tests]
             mkdir -p "${CIRCLE_WORKING_DIRECTORY}/results/junit/"
             pytest --junitxml="results/junit/results-${CIRCLE_NODE_INDEX}.xml" --verbose --cov=moeflow --cov-report term-missing tests
       - store_artifacts:

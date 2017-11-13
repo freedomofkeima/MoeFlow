@@ -3,16 +3,6 @@ from setuptools import find_packages, setup
 
 requires = [
     'attrs==17.3.0',
-    'bleach==1.5.0',
-    'enum34==1.1.6',
-    'html5lib==0.9999999',
-    'Markdown==2.6.9',
-    'numpy==1.13.3',
-    'protobuf==3.4.0',
-    'six==1.11.0',
-    'tensorflow==1.4.0',
-    'tensorflow-tensorboard==0.4.0rc2',
-    'Werkzeug==0.12.2',
 ]
 
 console_scripts = [
@@ -38,6 +28,8 @@ setup(
         "Environment :: Web Environment"
     ],
     entry_points={'console_scripts': console_scripts},
-    tests_require=['pytest', 'pytest-cov', 'pytest-sugar'],
+    extras_require={
+        'tests': ['pytest', 'pytest-cov', 'pytest-sugar']
+    },
     zip_safe=False
 )

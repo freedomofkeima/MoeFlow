@@ -9,6 +9,7 @@
 # Packages
 *.egg
 *.egg-info
+.eggs/
 
 # Unit test / coverage reports
 .coverage
