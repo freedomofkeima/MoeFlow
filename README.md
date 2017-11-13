@@ -1,10 +1,12 @@
 # MoeFlow
 
+[![CircleCI](https://circleci.com/gh/freedomofkeima/MoeFlow/tree/master.svg?style=shield)](https://circleci.com/gh/freedomofkeima/MoeFlow/tree/master)
+
 Repository for anime characters recognition website, powered by TensorFlow
 
 ## Requirements
 
-- TensorFlow 1.4.0
+- TensorFlow 1.4.0 (`pip install tensorflow==1.4.0` first)
 
 ## License
 
