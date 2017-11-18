@@ -13,6 +13,19 @@
 	    <input type="file" name="uploaded_image" accept="image/*">
 	    <input type="submit">
 	</form>
+	{% if original_uri %}
+	    <h4>Input:</h4>
+	    <img src="{{ original_uri }}">
+	    <h4>Output:</h4>
+	    <table>
+	    {% for result in results %}
+	        <tr>
+		    <td><img src="{{ result['image'] }}"></td>
+		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}, {% endfor %}</td>
+                </tr>
+	    {% endfor %}
+	    </table>
+	{% endif %}
 	<div id="footer">
 	    <p>Freedomofkeima Zone, 2017.</p>
 	</div>

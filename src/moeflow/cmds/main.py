@@ -6,6 +6,7 @@ import magic
 import os
 import tempfile
 import tensorflow as tf
+from base64 import b64encode
 from sanic import Sanic, response
 from moeflow.classify import classify_resized_face
 from moeflow.face_detect import run_face_detection
@@ -32,6 +33,10 @@ async def main_app(request):
             filename = input_jpg.name
             logging.info("Input file is created at {}".format(filename))
             cv2.imwrite(filename, image)
+            # Show image with base 64, will be changed later :)
+            ori_enc = b64encode(open(filename, "rb").read()).decode('ascii')
+            original_uri = "data:%s;base64,%s" % (mime_type, ori_enc)
+            results = []
             # Run face detection with animeface-2009
             detected_faces = run_face_detection(filename)
             # This operation will rewrite detected faces to 96 x 96 px
@@ -45,11 +50,24 @@ async def main_app(request):
                     app.label_lines,
                     app.graph
                 )
+                face_enc = b64encode(open(face, "rb").read()).decode('ascii')
+                face_uri = "data:image/jpeg;base64,%s" % face_enc
+                results.append({
+                    "image": face_uri,
+                    "prediction": predictions
+                })
                 logging.info(predictions)
             # Cleanup
             for faces in detected_faces:
                 if faces != filename:
                     os.remove(faces)
+        return response.html(
+            render(
+                "main.html",
+                original_uri=original_uri,
+                results=results
+            )
+        )
     return response.html(render("main.html"))
 
 

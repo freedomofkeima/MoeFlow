@@ -40,7 +40,7 @@ def classify_resized_face(file_name, label_lines, graph):
             {input_operation.outputs[0]: t}
         )
         # Sort to show labels of first prediction in order of confidence
-        top_k = predictions[0].argsort()[-5:][::-1]
+        top_k = predictions[0].argsort()[-3:][::-1]
 
         for node_id in top_k:
             human_string = label_lines[node_id]

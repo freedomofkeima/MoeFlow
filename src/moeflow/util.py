@@ -4,7 +4,7 @@ import logging
 import math
 import numpy as np
 
-WIDTH_HEIGHT_LIMIT = 800  # in pixel
+WIDTH_HEIGHT_LIMIT = 1000  # in pixel
 
 
 def resize_large_image(image_data):
