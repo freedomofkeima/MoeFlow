@@ -39,9 +39,6 @@ def classify_resized_face(file_name, label_lines, graph):
             softmax_tensor,
             {input_operation.outputs[0]: t}
         )
-        # image_data = tf.gfile.FastGFile(file_name, 'rb').read()
-        # ph = tf.placeholder(tf.string, shape=[])
-        # predictions = sess.run(softmax_tensor, {'DecodeJpeg/contents:0': image_data})
         # Sort to show labels of first prediction in order of confidence
         top_k = predictions[0].argsort()[-5:][::-1]
 

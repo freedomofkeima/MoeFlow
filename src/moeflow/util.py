@@ -9,7 +9,7 @@ WIDTH_HEIGHT_LIMIT = 800  # in pixel
 
 def resize_large_image(image_data):
     img_array = np.fromstring(image_data, dtype=np.uint8)
-    image = cv2.imdecode(img_array, 0)
+    image = cv2.imdecode(img_array, 1)
     height, width = image.shape[:2]
     logging.info("Height: {}, Width: {}".format(height, width))
     if height > width and height > WIDTH_HEIGHT_LIMIT:
@@ -20,7 +20,7 @@ def resize_large_image(image_data):
             (new_width, WIDTH_HEIGHT_LIMIT),
             interpolation=cv2.INTER_AREA
         )
-    else:
+    elif width > WIDTH_HEIGHT_LIMIT:
         ratio = float(WIDTH_HEIGHT_LIMIT) / float(width)
         new_height = int((height * ratio) + 0.5)
         return cv2.resize(
@@ -28,6 +28,8 @@ def resize_large_image(image_data):
             (WIDTH_HEIGHT_LIMIT, new_height),
             interpolation=cv2.INTER_AREA
         )
+    else:
+        return image
 
 
 def resize_faces(image_files, width=96, height=96):
