@@ -7,9 +7,10 @@ import os
 import tempfile
 import tensorflow as tf
 from sanic import Sanic, response
+from moeflow.classify import classify_resized_face
 from moeflow.face_detect import run_face_detection
 from moeflow.jinja2_env import render
-from moeflow.util import resize_large_image
+from moeflow.util import resize_large_image, resize_faces
 
 app = Sanic(__name__)
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -25,16 +26,30 @@ async def main_app(request):
         mime_type =  magic.from_buffer(uploaded_image.body, mime=True)
         if mime_type not in ALLOWED_MIMETYPE:
             return response.redirect('/')
+        # Scale down input image to ~800 px
         image = resize_large_image(uploaded_image.body)
         with tempfile.NamedTemporaryFile(mode="wb", suffix='.jpg') as input_jpg:
             filename = input_jpg.name
             logging.info("Input file is created at {}".format(filename))
             cv2.imwrite(filename, image)
+            # Run face detection with animeface-2009
             detected_faces = run_face_detection(filename)
-            logging.info(detected_faces)
+            # This operation will rewrite detected faces to 96 x 96 px
+            resize_faces(detected_faces)
+            # Classify with TensorFlow
+            if not detected_faces:  # Use overall image as default
+                detected_faces = [filename]
+            for face in detected_faces:
+                predictions = classify_resized_face(
+                    face,
+                    app.label_lines,
+                    app.graph
+                )
+                logging.info(predictions)
             # Cleanup
             for faces in detected_faces:
-                os.remove(faces)
+                if faces != filename:
+                    os.remove(faces)
     return response.html(render("main.html"))
 
 
@@ -51,10 +66,13 @@ async def initialize(app, loop):
     app.label_lines = [
         line.strip() for line in tf.gfile.GFile(label_path)
     ]
+    graph = tf.Graph()
+    graph_def = tf.GraphDef()
     with tf.gfile.FastGFile(model_path, 'rb') as f:
-        graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
-        _ = tf.import_graph_def(graph_def, name='')
+    with graph.as_default():
+        tf.import_graph_def(graph_def, name='')
+    app.graph = graph
     logging.info("MoeFlow model is now initialized!")
 
 

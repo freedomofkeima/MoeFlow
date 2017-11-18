@@ -28,3 +28,15 @@ def resize_large_image(image_data):
             (WIDTH_HEIGHT_LIMIT, new_height),
             interpolation=cv2.INTER_AREA
         )
+
+
+def resize_faces(image_files, width=96, height=96):
+    for image_file in image_files:
+        image = cv2.imread(image_file)
+        resized_image = cv2.resize(
+            image,
+            (width, height),
+            interpolation=cv2.INTER_AREA
+        )
+        cv2.imwrite(image_file, resized_image)
+
