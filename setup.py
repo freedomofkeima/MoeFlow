@@ -2,7 +2,16 @@
 from setuptools import find_packages, setup
 
 requires = [
+    'aiofiles==0.3.2',
     'attrs==17.3.0',
+    'httptools==0.0.9',
+    'jinja2==2.10',
+    'MarkupSafe==1.0',
+    'python-magic==0.4.13',
+    'sanic==0.6.0',
+    'ujson==1.35',
+    'uvloop==0.8.1',
+    'websockets==4.0.1',
 ]
 
 console_scripts = [
