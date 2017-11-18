@@ -7,18 +7,25 @@ Repository for anime characters recognition website, powered by TensorFlow
 ## Requirements
 
 - TensorFlow 1.4.0 (`pip install tensorflow==1.4.0` first)
+- [nagadomi/animeface-2009](https://github.com/nagadomi/animeface-2009)
 
-## How to run
+## How to create initial environment
 
-For first-timers:
+Python Environment:
 
 ```
 $ virtualenv -p python3 venv  # Ensure python3 version is 3.5, otherwise TensorFlow might not work
 $ . venv/bin/activate
-
+$ pip install tensorflow==1.4.0
 ```
 
-After that, you can simply run it by:
+Since `nagadomi/animeface-2009` is an independent project, you need to clone it somewhere in your local directory. Note that the project requires Ruby, ImageMagick, and gcc to run.
+
+After you finish installing it, go to `detect.rb` and update the `require` part (line 4) accordingly.
+
+## How to run
+
+After running steps above, you can simply run it by:
 
 ```
 $ pip install -e .
