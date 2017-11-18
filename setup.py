@@ -7,6 +7,8 @@ requires = [
     'httptools==0.0.9',
     'jinja2==2.10',
     'MarkupSafe==1.0',
+    'numpy==1.13.3',
+    'opencv-python==3.3.0.10',
     'python-magic==0.4.13',
     'sanic==0.6.0',
     'ujson==1.35',
