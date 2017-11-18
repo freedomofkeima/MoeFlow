@@ -1,3 +1,6 @@
+# MoeFlow models
+models/output_*
+
 # Python
 *.pyc
 .cache/

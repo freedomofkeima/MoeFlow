@@ -23,11 +23,14 @@ Since `nagadomi/animeface-2009` is an independent project, you need to clone it 
 
 After you finish installing it, go to `detect.rb` and update the `require` part (line 4) accordingly.
 
+After that, you need to download MoeFlow model via `models/download_model.sh` (~ 100 MB).
+
 ## How to run
 
 After running steps above, you can simply run it by:
 
 ```
+$ export MOEFLOW_MODEL_PATH='/path/to/MoeFlow/models'
 $ pip install -e .
 $ app
 ```

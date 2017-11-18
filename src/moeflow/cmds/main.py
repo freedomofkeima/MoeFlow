@@ -5,6 +5,7 @@ import logging
 import magic
 import os
 import tempfile
+import tensorflow as tf
 from sanic import Sanic, response
 from moeflow.face_detect import run_face_detection
 from moeflow.jinja2_env import render
@@ -40,6 +41,21 @@ async def main_app(request):
 @app.route("/hello_world")
 async def hello_world(request):
     return response.text("Hello world!")
+
+
+@app.listener('before_server_start')
+async def initialize(app, loop):
+    moeflow_path = os.environ.get('MOEFLOW_MODEL_PATH')
+    label_path = os.path.join(os.sep, moeflow_path, "output_labels_2.txt")
+    model_path = os.path.join(os.sep, moeflow_path, "output_graph_2.pb")
+    app.label_lines = [
+        line.strip() for line in tf.gfile.GFile(label_path)
+    ]
+    with tf.gfile.FastGFile(model_path, 'rb') as f:
+        graph_def = tf.GraphDef()
+        graph_def.ParseFromString(f.read())
+        _ = tf.import_graph_def(graph_def, name='')
+    logging.info("MoeFlow model is now initialized!")
 
 
 def main():
