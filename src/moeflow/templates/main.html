@@ -20,7 +20,7 @@
 	    <table>
 	    {% for result in results %}
 	        <tr>
-		    <td><img src="{{ result['image'] }}"></td>
+		    <td><img src="{{ result['image'] }}" style="max-height:500px"></td>
 		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
                 </tr>
 	    {% endfor %}
