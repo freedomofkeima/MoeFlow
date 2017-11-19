@@ -6,28 +6,28 @@
     </head>
     <body>
         <h2>MoeFlow: Anime Characters Recognition (Alpha Ver.)</h2>
-	<p>For more information, see <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
+	<p>For more information, see <a href="https://github.com/freedomofkeima/MoeFlow" target="_blank">freedomofkeima/MoeFlow</a> and <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
         <p>Allowed image mime-type: image/jpeg, image/png</p>
-	<p>Note: This operation will be very slow if there are a lot of characters in a single image!</p>
+	<p>Note: This operation will be very slow (around 15 seconds) if there are a lot of characters in a single image!</p>
 	<form method="POST" enctype="multipart/form-data">
 	    <input type="file" name="uploaded_image" accept="image/*">
 	    <input type="submit">
 	</form>
 	{% if original_uri %}
 	    <h4>Input:</h4>
-	    <img src="{{ original_uri }}">
+	    <img src="{{ original_uri }}" height="500">
 	    <h4>Output:</h4>
 	    <table>
 	    {% for result in results %}
 	        <tr>
 		    <td><img src="{{ result['image'] }}"></td>
-		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}, {% endfor %}</td>
+		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
                 </tr>
 	    {% endfor %}
 	    </table>
 	{% endif %}
 	<div id="footer">
-	    <p>Freedomofkeima Zone, 2017.</p>
+		<p><a href="https://freedomofkeima.com/">Freedomofkeima Zone, 2017.</a></p>
 	</div>
     </body>
 </html>
