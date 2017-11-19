@@ -4,6 +4,44 @@
 
 Repository for anime characters recognition website, powered by TensorFlow
 
+## Project Introduction
+
+This project is related to [freedomofkeima/transfer-learning-anime](https://github.com/freedomofkeima/transfer-learning-anime).
+
+### Background
+
+This project is heavily inspired from characters indexing website such as [saucenao](https://saucenao.com/) and [iqdb](https://www.iqdb.org/). In general, character indexing websites work well since character arts are generally limited in terms of number compared to real-life photos.
+
+![iqdb_status](screenshots/iqdb_status.png)
+
+However, there are cases where character indexing websites will not work well, e.g.: the image is cropped or altered.
+
+**Full Image**
+
+![saucenao_full_image](screenshots/saucenao_from_full_image_2_characters.png)
+
+![moeflow_full_image](screenshots/full_image_2_characters.png)
+
+**Altered Image**
+
+![saucenao_altered](screenshots/saucenao_from_altered_2_characters.png)
+
+![moeflow_altered](screenshots/altered_2_characters.png)
+
+Or, there are cases where you want to recognize a character from a photo.
+
+![saucenao_photo](screenshots/saucenao_from_photo.png)
+
+![iqdb_photo](screenshots/iqdb_from_photo.png)
+
+![moeflow_photo](screenshots/from_photo.png)
+
+### Transfer Learning
+
+This project only uses [30 images per character](100_class_traning_note.md) for learning, which are very low in number for image recognition learning. However, this number is chosen since the majority of characters has a limited number of arts.
+
+In [yande.re](https://yande.re/tag?name=&order=count&type=4), there are around 35000 registered character tags. However, top 1000 characters only have 70+ images while top 2000 characters only have 40+ images.
+
 ## Requirements
 
 - TensorFlow 1.4.0 (`pip install tensorflow==1.4.0` first)

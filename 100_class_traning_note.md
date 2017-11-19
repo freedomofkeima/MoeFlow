@@ -71,3 +71,5 @@ INFO:tensorflow:2017-11-18 11:31:17.489956: Step 15999: Cross entropy = 0.112020
 INFO:tensorflow:2017-11-18 11:31:17.560669: Step 15999: Validation accuracy = 61.0% (N=100)
 INFO:tensorflow:Final test accuracy = 60.3% (N=385)
 ```
+
+- learning rate = 0.02, training steps = 4000, random crop = 10, random brightness = 10
