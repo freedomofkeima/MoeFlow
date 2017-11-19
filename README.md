@@ -2,7 +2,9 @@
 
 [![CircleCI](https://circleci.com/gh/freedomofkeima/MoeFlow/tree/master.svg?style=shield)](https://circleci.com/gh/freedomofkeima/MoeFlow/tree/master)
 
-Repository for anime characters recognition website, powered by TensorFlow
+Repository for anime characters recognition website, powered by TensorFlow.
+
+Website will be available at later date. For closed invitation, please contact me :)
 
 ## Project Introduction
 
@@ -12,29 +14,31 @@ This project is related to [freedomofkeima/transfer-learning-anime](https://gith
 
 This project is heavily inspired from characters indexing website such as [saucenao](https://saucenao.com/) and [iqdb](https://www.iqdb.org/). In general, character indexing websites work well since character arts are generally limited in terms of number compared to real-life photos.
 
-![iqdb_status](screenshots/iqdb_status.png)
+<img alt="iqdb_status" src="screenshots/iqdb_status.png" width="600">
 
 However, there are cases where character indexing websites will not work well, e.g.: the image is cropped or altered.
 
-**Full Image**
+**Full Image** (Top: Saucenao, Bottom: MoeFlow)
 
-![saucenao_full_image](screenshots/saucenao_from_full_image_2_characters.png)
+<img alt="saucenao_full_image" src="screenshots/saucenao_from_full_image_2_characters.png" width="600">
 
-![moeflow_full_image](screenshots/full_image_2_characters.png)
+<img alt="moeflow_full_image" src="screenshots/full_image_2_characters.png" height="500">
 
 **Altered Image**
 
-![saucenao_altered](screenshots/saucenao_from_altered_2_characters.png)
+<img alt="saucenao_full_image" src="screenshots/saucenao_from_altered_2_characters.png" width="600">
 
-![moeflow_altered](screenshots/altered_2_characters.png)
+<img alt="moeflow_full_image" src="screenshots/altered_2_characters.png" height="500">
 
 Or, there are cases where you want to recognize a character from a photo.
 
-![saucenao_photo](screenshots/saucenao_from_photo.png)
+(Top: Saucenao, Middle: iqdb, Bottom: MoeFlow)
 
-![iqdb_photo](screenshots/iqdb_from_photo.png)
+<img alt="saucenao_photo" src="screenshots/saucenao_from_photo.png" width="600">
 
-![moeflow_photo](screenshots/from_photo.png)
+<img alt="iqdb_photo" src="screenshots/iqdb_from_photo.png" width="600">
+
+<img alt="moeflow_photo" src="screenshots/from_photo.png" height="600">
 
 ### Transfer Learning
 
