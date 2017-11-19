@@ -1,3 +1,33 @@
+## List of characters
+
+Currently, 100 characters are picked from 25 animation series.
+
+1. Angel Beats!: Tachibana Kanade
+2. Charlotte: Tomori Nao
+3. Chuunibyou demo Koi ga Shitai!: Dekomori Sanae, Nibutani Shinka, Takanashi Rikka
+4. Date A Live: Itsuka Kotori, Tobiichi Origami, Tokisaki Kurumi, Yatogami Tohka, Yoshino
+5. Eromanga-sensei: Izumi Sagiri, Yamada Elf
+6. Evangelion: Ayanami Rei, Souryuu Asuka Langley
+7. Fate Series: Illyasviel von Einzbern, Matou Sakura, Miyu Edelfelt, Saber, Tohsaka Rin
+8. Gochuumon wa Usagi desu ka?: Hoto Cocoa, Jouga Maya, Kafuu Chino, Kirima Sharo, Natsu Megumi, Tedeza Rize, Ujimatsu Chiya
+9. K-On!: Akiyama Mio, Asahina Mikuru, Hirasawa Yui, Kotobuki Tsumugi, Nakano Azusa, Tainaka Ritsu
+10. Kancolle: Hibiki, Kashima, Kongou, Shigure
+11. Kiniro Mosaic: Alice Cartelet, Inokuma Youko, Komichi Aya, Kujou Karen, Oomiya Shinobu
+12. Kono Subarashii Sekai ni Shukufuku wo!: Aqua, Dustiness Ford Lalatina, Megumin
+13. Love Live!: Ayase Eli, Hoshizora Rin, Koizumi Hanayo, Kousaka Honoka, Minami Kotori, Nishikino Maki, Sonoda Umi, Toujou Nozomi, Yazawa Nico
+14. Love Live! Sunshine!!: Kunikida Hanamaru, Kurosawa Dia, Kurosawa Ruby, Matsuura Kanan, Ohara Mari, Sakurauchi Riko, Takami Chika, Tsushima Yoshiko, Watanabe You
+15. Madoka Magica: Akemi Homura, Kaname Madoka, Miki Sayaka, Sakura Kyouko, Tomoe Mami
+16. New Game!: Sakura Nene, Suzukaze Aoba, Takimoto Hifumi, Yagami Kou
+17. Nisekoi: Kirisaki Chitoge, Onodera Kosaki
+18. Ore no Imouto ga Konnani Kawaii Wake ga Nai: Aragaki Ayase, Gokou Ruri, Kousaka Kirino
+19. Re:Zero kara Hajimeru Isekai Seikatsu: Emilia, Ram, Rem
+20. Saenai Heroine no Sodatekata: Hyoudou Michiru, Kasumigaoka Utaha, Katou Megumi, Sawamura Spencer Eriri
+21. Steins;Gate: Makise Kurisu, Shiina Mayuri
+22. Suzumiya Haruhi no Yuuutsu: Nagato Yuki, Suzumiya Haruhi
+23. Sword Art Online: Asuna, Kirigaya Suguha, Leafa, Lisbeth, Silica, Sinon, Yui
+24. Toaru Kagaku no Railgun: Misaka Mikoto, Saten Ruiko, Shirai Kuroko, Uiharu Kazari
+25. Yahari Ore no Seishun Love Comedy wa Machigatteiru: Yuigahama Yui, Yukinoshita Yukino
+
 ## Test results with 100 class
 
 Each class contains only 30 images.

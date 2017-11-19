@@ -4,7 +4,7 @@
 
 Repository for anime characters recognition website, powered by TensorFlow.
 
-Website will be available at later date. For closed invitation, please contact me :)
+Demonstration page (Alpha version): [MoeFlow Website](https://freedomofkeima.com/moeflow/).
 
 ## Project Introduction
 
