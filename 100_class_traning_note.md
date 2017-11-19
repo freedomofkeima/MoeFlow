@@ -72,4 +72,14 @@ INFO:tensorflow:2017-11-18 11:31:17.560669: Step 15999: Validation accuracy = 61
 INFO:tensorflow:Final test accuracy = 60.3% (N=385)
 ```
 
-- learning rate = 0.02, training steps = 4000, random crop = 10, random brightness = 10
+### Results (Additional)
+
+In this experimentation, the number of images is not fixed to 30. Each category has around 30 to 45 images.
+
+- learning rate = 0.02, training steps = 8000
+```
+INFO:tensorflow:2017-11-19 13:37:58.752268: Step 7999: Train accuracy = 99.0%
+INFO:tensorflow:2017-11-19 13:37:58.752560: Step 7999: Cross entropy = 0.369550
+INFO:tensorflow:2017-11-19 13:37:58.866312: Step 7999: Validation accuracy = 62.0% (N=100)
+INFO:tensorflow:Final test accuracy = 64.0% (N=511)
+```
