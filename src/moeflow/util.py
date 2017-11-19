@@ -2,6 +2,9 @@
 import cv2
 import logging
 import math
+import os
+import time
+
 import numpy as np
 
 WIDTH_HEIGHT_LIMIT = 1600  # in pixel
@@ -41,4 +44,13 @@ def resize_faces(image_files, width=96, height=96):
             interpolation=cv2.INTER_AREA
         )
         cv2.imwrite(image_file, resized_image)
+
+
+def cleanup_image_cache(image_dir, expire=3600):  # Expire in 1 hour
+    now = time.time()
+    for f in os.listdir(image_dir):
+        f = os.path.join(image_dir, f)
+        if os.stat(f).st_mtime < now - expire:
+            if os.path.isfile(f):
+                os.remove(f)
 

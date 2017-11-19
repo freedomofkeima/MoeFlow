@@ -4,18 +4,21 @@ import jinja2
 import logging
 import magic
 import os
+import shutil
 import tempfile
 import tensorflow as tf
+import uuid
 from base64 import b64encode
 from sanic import Sanic, response
 from moeflow.classify import classify_resized_face
 from moeflow.face_detect import run_face_detection
 from moeflow.jinja2_env import render
-from moeflow.util import resize_large_image, resize_faces
+from moeflow.util import resize_large_image, resize_faces, cleanup_image_cache
 
 app = Sanic(__name__)
 dir_path = os.path.dirname(os.path.realpath(__file__))
-app.static('/static', os.path.join(dir_path, '..', 'static'))
+static_path = os.path.join(dir_path, '..', 'static')
+app.static('/static', static_path)
 
 ALLOWED_MIMETYPE = ['image/jpeg', 'image/png']
 
@@ -33,9 +36,11 @@ async def main_app(request):
             filename = input_jpg.name
             logging.info("Input file is created at {}".format(filename))
             cv2.imwrite(filename, image)
-            # Show image with base 64, will be changed later :)
-            ori_enc = b64encode(open(filename, "rb").read()).decode('ascii')
-            original_uri = "data:%s;base64,%s" % (mime_type, ori_enc)
+            # Copy to image directory
+            ori_name = uuid.uuid4().hex + ".jpg"
+            shutil.copyfile(filename, os.path.join(
+                static_path, 'images', ori_name
+            ))
             results = []
             # Run face detection with animeface-2009
             detected_faces = run_face_detection(filename)
@@ -50,21 +55,24 @@ async def main_app(request):
                     app.label_lines,
                     app.graph
                 )
-                face_enc = b64encode(open(face, "rb").read()).decode('ascii')
-                face_uri = "data:image/jpeg;base64,%s" % face_enc
+                face_name = uuid.uuid4().hex + ".jpg"
+                shutil.copyfile(face, os.path.join(
+                    static_path, 'images', face_name
+                ))
                 results.append({
-                    "image": face_uri,
+                    "image_name": face_name,
                     "prediction": predictions
                 })
                 logging.info(predictions)
             # Cleanup
+            cleanup_image_cache(os.path.join(static_path, 'images'))
             for faces in detected_faces:
                 if faces != filename:
                     os.remove(faces)
         return response.html(
             render(
                 "main.html",
-                original_uri=original_uri,
+                ori_name=ori_name,
                 results=results
             )
         )

@@ -1,6 +1,9 @@
 # MoeFlow models
 models/output_*
 
+# Image serving directory
+src/moeflow/static/images/*
+
 # Python
 *.pyc
 .cache/

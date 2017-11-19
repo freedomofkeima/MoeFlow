@@ -13,21 +13,21 @@
 	    <input type="file" name="uploaded_image" accept="image/*">
 	    <input type="submit">
 	</form>
-	{% if original_uri %}
+	{% if ori_name %}
 	    <h4>Input:</h4>
-	    <img src="{{ original_uri }}" style="max-height:500px">
+	    <img src="./static/images/{{ ori_name }}" style="max-height:500px">
 	    <h4>Output:</h4>
 	    <table>
 	    {% for result in results %}
 	        <tr>
-		    <td><img src="{{ result['image'] }}" style="max-height:500px"></td>
+		    <td><img src="./static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
 		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
                 </tr>
 	    {% endfor %}
 	    </table>
 	{% endif %}
 	<div id="footer">
-		<p><a href="https://freedomofkeima.com/">Freedomofkeima Zone, 2017.</a></p>
+		<p>Freedomofkeima Zone, 2017.</p>
 	</div>
     </body>
 </html>
