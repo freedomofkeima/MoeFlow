@@ -103,10 +103,12 @@ INFO:tensorflow:Final test accuracy = 60.3% (N=385)
 ```
 
 - learning rate = 0.02 training steps = 4000 random factor (crop, brightness) = 10% (very slow!)
+```
 INFO:tensorflow:2017-11-19 16:51:37.128322: Step 3999: Train accuracy = 94.0%
 INFO:tensorflow:2017-11-19 16:51:37.128522: Step 3999: Cross entropy = 0.745446
 INFO:tensorflow:2017-11-19 16:51:37.200592: Step 3999: Validation accuracy = 54.0% (N=100)
 INFO:tensorflow:Final test accuracy = 59.7% (N=385)
+```
 
 ### Results (Additional)
 
