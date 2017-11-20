@@ -13,7 +13,7 @@ faces = AnimeFace::detect(image)
 counter = 0
 pp faces
 faces.each do |ctx|
-  next if ctx["likelihood"] < 0.8
+  next if ctx["likelihood"] < 0.7
   counter = counter + 1
   filename = File.basename(ARGV[0]).split(".").first + "_out_" + counter.to_s + ".jpg"
   output = File.join(ARGV[1], filename)
