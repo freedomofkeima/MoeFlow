@@ -18,10 +18,15 @@ faces.each do |ctx|
   filename = File.basename(ARGV[0]).split(".").first + "_out_" + counter.to_s + ".jpg"
   output = File.join(ARGV[1], filename)
   face = ctx["face"]
-  x = [face["x"] - 30, 0].max
-  y = [face["y"] - 30, 0].max
-  width = [face["width"] + 60, image.columns - x].min
-  height = [face["height"] + 60, image.rows - y].min
+  if face["width"] < 125 or face["height"] < 125
+    margin = ([face["width"], face["height"]].min / 5).ceil
+  else
+    margin = 25
+  end
+  x = [face["x"] - margin, 0].max
+  y = [face["y"] - margin, 0].max
+  width = [face["width"] + 2 * margin, image.columns - x].min
+  height = [face["height"] + 2 * margin, image.rows - y].min
   gc = image.crop(x, y, width, height)
   gc.write(output)
 end
