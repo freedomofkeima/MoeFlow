@@ -30,7 +30,9 @@ Currently, 100 characters are picked from 25 animation series.
 
 ## Test results with 100 class
 
-Each class contains only 30 images.
+Each class only contains around ~~30~~* 60 images.
+
+(*) The number of dataset is increased from ~30 to ~60 and the overall accuracy is increased by 5% to 10% (from 60% - 65% to 70%).
 
 Since we are using a very small number of images (in order to be as realistic as possible), we need to modify `retrain.py`.
 If we don't modify it, validation list will be empty for several characters, which will cause division by zero exception.
@@ -54,62 +56,46 @@ This mechanism allows validation & testing percentage somewhere between 10% - 15
 
 ## Results
 
-- learning rate = 0.01, training steps = 4000 (default)
-```
-INFO:tensorflow:2017-11-18 09:32:51.111815: Step 3999: Train accuracy = 89.0%
-INFO:tensorflow:2017-11-18 09:32:51.112015: Step 3999: Cross entropy = 1.283925
-INFO:tensorflow:2017-11-18 09:32:51.184739: Step 3999: Validation accuracy = 50.0% (N=100)
-INFO:tensorflow:Final test accuracy = 53.0% (N=385)
-```
+The experiment is done twice, with ~30 images per category and ~60 images per category later on.
 
-- learning rate = 0.02, training steps = 4000
-```
-INFO:tensorflow:2017-11-18 09:45:02.126555: Step 3999: Train accuracy = 98.0%
-INFO:tensorflow:2017-11-18 09:45:02.126758: Step 3999: Cross entropy = 0.612478
-INFO:tensorflow:2017-11-18 09:45:02.201436: Step 3999: Validation accuracy = 61.0% (N=100)
-INFO:tensorflow:Final test accuracy = 56.9% (N=385)
-```
+**Results of ~30 images per category**:
 
-- learning rate = 0.01, training steps = 8000
-```
-INFO:tensorflow:2017-11-18 09:59:39.834123: Step 7999: Train accuracy = 99.0%
-INFO:tensorflow:2017-11-18 09:59:39.834319: Step 7999: Cross entropy = 0.607300
-INFO:tensorflow:2017-11-18 09:59:39.905609: Step 7999: Validation accuracy = 56.0% (N=100)
-INFO:tensorflow:Final test accuracy = 59.2% (N=385)
-```
+|Number of Categories|Learning Rate|Training Steps|Final Train Accuracy|Final Test Accuracy|
+| --- | --- | --- | --- | --- |
+| 100 | 0.01 | 4000 | 89.0% | 53.0% (N = 385) |
+| 100 | 0.02 | 4000 | 98.0% | 56.9% (N = 385) |
+| 100 | 0.01 | 8000 | 99.0% | 59.2% (N = 385) |
+| 100 | 0.02 | 8000 | 100.0% | 59.7% (N = 385) |
+| 100 | 0.005 | 16000 | 97.0% | 59.0% (N = 385) |
+| 100 | 0.02 | 16000 | 100.0% | **60.3% (N = 385)** |
 
-- learning rate = 0.02, training steps = 8000
-```
-INFO:tensorflow:2017-11-18 10:13:54.358437: Step 7999: Train accuracy = 100.0%
-INFO:tensorflow:2017-11-18 10:13:54.358630: Step 7999: Cross entropy = 0.282326
-INFO:tensorflow:2017-11-18 10:13:54.430193: Step 7999: Validation accuracy = 59.0% (N=100)
-INFO:tensorflow:Final test accuracy = 59.7% (N=385)
-```
+The initial model accuracy is **60.3%**.
+ 
+Tested stuffs:
+- At several occasions, the number of training steps was increased to 40000 with no avail (no significant changes)
+- Hyperparameter tuning was experimented (random crop 5% random brightness 5%), but the result only has 1% difference and it took the entire day to run
 
-- learning rate = 0.005, training steps = 16000
-```
-INFO:tensorflow:2017-11-18 11:03:02.746575: Step 15999: Train accuracy = 97.0%
-INFO:tensorflow:2017-11-18 11:03:02.746776: Step 15999: Cross entropy = 0.704776
-INFO:tensorflow:2017-11-18 11:03:02.817481: Step 15999: Validation accuracy = 58.0% (N=100)
-INFO:tensorflow:Final test accuracy = 59.0% (N=385)
-```
+**Result of ~60 images per category**:
+|Number of Categories|Learning Rate|Training Steps|Final Train Accuracy|Final Test Accuracy|
+| --- | --- | --- | --- | --- |
+| 3 | 0.02 | 4000 | 100.0% | **85.0% (N=20)** |
+| 25 | 0.02 | 4000 | 100.0% | **80.6% (N=175)** |
+| 25 | 0.01 | 4000 | 100.0% | 80.6% (N=175) |
+| 35 | 0.02 | 4000 | 100.0% | **81.7% (N=219)** |
+| 35 | 0.01 | 4000 | 100.0% | 78.1% (N=219) |
+| 50 | 0.02 | 4000 | 99.0% | 77.4% (N=318) |
+| 50 | 0.02 | 8000 | 100.0% | **78.9% (N = 318)** |
+| 65 | 0.02 | 16000 | 100.0% | **74.2% (N = 438)** |
+| 75 | 0.02 | 4000 | 93.0% | 71.1% (N=477) |
+| 75 | 0.02 | 8000 | 98.0% | 74.2% (N=477) |
+| 75 | 0.02 | 16000 | 98.0% | **76.7% (N=477)** |
+| 100 | 0.02 | 4000 | 85.0% | 64.1% (N=682) |
+| 100 | 0.02 | 8000 | 94.0% | 67.9% (N=682) |
+| 100 | 0.02 | 16000 | 94.0% | **70.1% (N=682)** |
 
-- learning rate = 0.02, training steps = 16000
-```
-INFO:tensorflow:2017-11-18 11:31:17.489760: Step 15999: Train accuracy = 100.0%
-INFO:tensorflow:2017-11-18 11:31:17.489956: Step 15999: Cross entropy = 0.112020
-INFO:tensorflow:2017-11-18 11:31:17.560669: Step 15999: Validation accuracy = 61.0% (N=100)
-INFO:tensorflow:Final test accuracy = 60.3% (N=385)
-```
+![](test_accuracy_vs_num_of_categories.png)
 
-### Results (Additional)
-
-In this experimentation, the number of images is not fixed to 30. Each category has around 30 to 45 images.
-
-- learning rate = 0.02, training steps = 8000
-```
-INFO:tensorflow:2017-11-19 13:37:58.752268: Step 7999: Train accuracy = 99.0%
-INFO:tensorflow:2017-11-19 13:37:58.752560: Step 7999: Cross entropy = 0.369550
-INFO:tensorflow:2017-11-19 13:37:58.866312: Step 7999: Validation accuracy = 62.0% (N=100)
-INFO:tensorflow:Final test accuracy = 64.0% (N=511)
-```
+TODO:
+- Investigate the correlation between number of categories vs final test accuracy (diminishing rate)
+- Improve character detection: rotation / axis
+- Improve character recognition: image noise, brightness / contrast, border, facial expression (closed eyes, etc),  characters with more than 1 form (DAL, SAO, ...)
