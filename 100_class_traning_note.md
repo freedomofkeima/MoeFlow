@@ -76,6 +76,7 @@ Tested stuffs:
 - Hyperparameter tuning was experimented (random crop 5% random brightness 5%), but the result only has 1% difference and it took the entire day to run
 
 **Result of ~60 images per category**:
+
 |Number of Categories|Learning Rate|Training Steps|Final Train Accuracy|Final Test Accuracy|
 | --- | --- | --- | --- | --- |
 | 3 | 0.02 | 4000 | 100.0% | **85.0% (N=20)** |
