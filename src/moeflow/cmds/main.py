@@ -29,7 +29,7 @@ async def main_app(request):
         uploaded_image  = request.files.get('uploaded_image')
         mime_type =  magic.from_buffer(uploaded_image.body, mime=True)
         if mime_type not in ALLOWED_MIMETYPE:
-            return response.redirect('/')
+            return response.html(render("main.html"))
         # Scale down input image to ~800 px
         image = resize_large_image(uploaded_image.body)
         with tempfile.NamedTemporaryFile(mode="wb", suffix='.jpg') as input_jpg:

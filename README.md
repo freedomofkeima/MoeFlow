@@ -45,9 +45,11 @@ Or, there are cases where you want to recognize a character from a photo.
 
 ### Transfer Learning
 
-This project only uses [30 images per character](100_class_traning_note.md) for learning, which are very low in number for image recognition learning. However, this number is chosen since the majority of characters has a limited number of arts.
+This project only uses [~~30~~* 60 images per character](100_class_traning_note.md) for learning, which are very low in number for image recognition learning. However, this number is chosen since the majority of characters has a limited number of arts.
 
 In [yande.re](https://yande.re/tag?name=&order=count&type=4), there are around 35000 registered character tags. However, top 1000 characters only have 70+ images while top 2000 characters only have 40+ images.
+
+(*) The number of dataset is increased from ~30 to ~60 and the overall accuracy is increased by 5% to 10% (from 60% - 65% to 70%).
 
 ## Requirements
 
