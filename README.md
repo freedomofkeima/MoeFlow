@@ -6,6 +6,9 @@ Repository for anime characters recognition website, powered by TensorFlow.
 
 Demonstration page (Alpha version): [MoeFlow Website](https://freedomofkeima.com/moeflow/).
 
+MoeFlow is featured in:
+- [PyCon ID 2017](https://freedomofkeima.com/pyconid2017.pdf)
+
 ## Project Introduction
 
 This project is related to [freedomofkeima/transfer-learning-anime](https://github.com/freedomofkeima/transfer-learning-anime).
