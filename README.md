@@ -25,13 +25,13 @@ However, there are cases where character indexing websites will not work well, e
 
 <img alt="saucenao_full_image" src="screenshots/saucenao_from_full_image_2_characters.png" width="600">
 
-<img alt="moeflow_full_image" src="screenshots/full_image_2_characters.png" height="500">
+<img alt="moeflow_full_image" src="screenshots/full_image_2_characters.png" width="600">
 
 **Altered Image**
 
 <img alt="saucenao_full_image" src="screenshots/saucenao_from_altered_2_characters.png" width="600">
 
-<img alt="moeflow_full_image" src="screenshots/altered_2_characters.png" height="500">
+<img alt="moeflow_full_image" src="screenshots/altered_2_characters.png" width="600">
 
 Or, there are cases where you want to recognize a character from a photo.
 
@@ -41,7 +41,7 @@ Or, there are cases where you want to recognize a character from a photo.
 
 <img alt="iqdb_photo" src="screenshots/iqdb_from_photo.png" width="600">
 
-<img alt="moeflow_photo" src="screenshots/from_photo.png" height="600">
+<img alt="moeflow_photo" src="screenshots/from_photo.png" width="600">
 
 ### Transfer Learning
 
