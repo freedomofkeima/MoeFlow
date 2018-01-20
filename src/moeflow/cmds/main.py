@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import cv2
-import jinja2
 import logging
 import magic
 import os
@@ -8,7 +7,6 @@ import shutil
 import tempfile
 import tensorflow as tf
 import uuid
-from base64 import b64encode
 from sanic import Sanic, response
 from moeflow.classify import classify_resized_face
 from moeflow.face_detect import run_face_detection

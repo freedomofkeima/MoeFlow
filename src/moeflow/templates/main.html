@@ -1,35 +1,47 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-	<title>MoeFlow: Anime Characters Recognition</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_path }}static/main.css">
+       <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_path }}static/main.css">
+
+        <title>MoeFlow: Anime Characters Recognition</title>
     </head>
     <body>
         <h2>MoeFlow: Anime Characters Recognition (Alpha Ver.)</h2>
-	<p>For more information, see <a href="https://github.com/freedomofkeima/MoeFlow" target="_blank">freedomofkeima/MoeFlow</a> and <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
-	<p>Allowed image mime-type: image/jpeg, image/png.</p>
-	<p>List of 100 supported characters can be accessed <a href="https://github.com/freedomofkeima/MoeFlow/blob/master/100_class_traning_note.md#list-of-characters" target="_blank">here</a>.</p>
-	<p>Note: This operation will be very slow (around 15 seconds) if there are a lot of characters in a single image!</p>
-	<form method="POST" enctype="multipart/form-data">
-	    <input type="file" name="uploaded_image" accept="image/*">
-	    <input type="submit">
-	</form>
-	{% if ori_name %}
-	    <h4>Input:</h4>
-	    <img src="{{ url_path }}static/images/{{ ori_name }}" style="max-height:500px">
-	    <h4>Output:</h4>
-	    <table>
-	    {% for result in results %}
-	        <tr>
-			<td><img src="{{ url_path }}static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
-		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
-                </tr>
-	    {% endfor %}
-	    </table>
-	{% endif %}
-	<div id="footer">
-		<p>Freedomofkeima Zone, 2017.</p>
-	</div>
+		<p>For more information, see <a href="https://github.com/freedomofkeima/MoeFlow" target="_blank">freedomofkeima/MoeFlow</a> and <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
+		<p>Allowed image mime-type: image/jpeg, image/png.</p>
+		<p>List of 100 supported characters can be accessed <a href="https://github.com/freedomofkeima/MoeFlow/blob/master/100_class_traning_note.md#list-of-characters" target="_blank">here</a>.</p>
+		<p>Note: This operation will be very slow (around 15 seconds) if there are a lot of characters in a single image!</p>
+		<form method="POST" enctype="multipart/form-data">
+			<input type="file" name="uploaded_image" accept="image/*">
+			<input type="submit">
+		</form>
+		{% if ori_name %}
+			<h4>Input:</h4>
+			<img src="{{ url_path }}static/images/{{ ori_name }}" style="max-height:500px">
+			<h4>Output:</h4>
+			<table>
+			{% for result in results %}
+				<tr>
+					<td><img src="{{ url_path }}static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
+					<td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		{% endif %}
+		<div id="footer">
+			<p>Freedomofkeima Zone, 2017.</p>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
 
