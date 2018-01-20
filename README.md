@@ -82,6 +82,8 @@ $ pip install -e .
 $ app
 ```
 
+If your application is configured to run in a relative path, e.g.: [https://freedomofkeima.com/moeflow/](https://freedomofkeima.com/moeflow/), then you can set static URL path via `export MOEFLOW_RELATIVE_URL_PATH='/moeflow/'`.
+
 ## License
 
 This project itself is licensed under MIT License. 

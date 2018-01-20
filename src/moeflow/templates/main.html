@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<title>MoeFlow: Anime Characters Recognition</title>
-	<link rel="stylesheet" type="text/css" href="./static/main.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_path }}static/main.css">
     </head>
     <body>
         <h2>MoeFlow: Anime Characters Recognition (Alpha Ver.)</h2>
@@ -16,12 +16,12 @@
 	</form>
 	{% if ori_name %}
 	    <h4>Input:</h4>
-	    <img src="./static/images/{{ ori_name }}" style="max-height:500px">
+	    <img src="{{ url_path }}static/images/{{ ori_name }}" style="max-height:500px">
 	    <h4>Output:</h4>
 	    <table>
 	    {% for result in results %}
 	        <tr>
-		    <td><img src="./static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
+			<td><img src="{{ url_path }}static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
 		    <td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
                 </tr>
 	    {% endfor %}
