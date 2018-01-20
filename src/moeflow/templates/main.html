@@ -11,37 +11,67 @@
 
         <title>MoeFlow: Anime Characters Recognition</title>
     </head>
-    <body>
-        <h2>MoeFlow: Anime Characters Recognition (Alpha Ver.)</h2>
-		<p>For more information, see <a href="https://github.com/freedomofkeima/MoeFlow" target="_blank">freedomofkeima/MoeFlow</a> and <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
-		<p>Allowed image mime-type: image/jpeg, image/png.</p>
-		<p>List of 100 supported characters can be accessed <a href="https://github.com/freedomofkeima/MoeFlow/blob/master/100_class_traning_note.md#list-of-characters" target="_blank">here</a>.</p>
-		<p>Note: This operation will be very slow (around 15 seconds) if there are a lot of characters in a single image!</p>
-		<form method="POST" enctype="multipart/form-data">
-			<input type="file" name="uploaded_image" accept="image/*">
-			<input type="submit">
-		</form>
-		{% if ori_name %}
-			<h4>Input:</h4>
-			<img src="{{ url_path }}static/images/{{ ori_name }}" style="max-height:500px">
-			<h4>Output:</h4>
-			<table>
-			{% for result in results %}
-				<tr>
-					<td><img src="{{ url_path }}static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
-					<td>Prediction: {% for prediction in result['prediction'] %} {{ prediction[0] }}{{ "," if not loop.last }} {% endfor %}</td>
-				</tr>
-			{% endfor %}
-			</table>
-		{% endif %}
-		<div id="footer">
-			<p>Freedomofkeima Zone, 2017.</p>
-		</div>
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <body class="bg-light">
+	<div class="container">
+	    <div class="py-5 text-center">
+                <h2>MoeFlow: Anime Characters Recognition (Alpha Ver.)</h2>
+                <p class="lead">For more information, see <a href="https://github.com/freedomofkeima/MoeFlow" target="_blank">freedomofkeima/MoeFlow</a> and <a href="https://github.com/freedomofkeima/transfer-learning-anime" target="_blank">freedomofkeima/transfer-learning-anime</a> at Github.</p>
+		<p class="lead">List of 100 supported characters can be accessed <a href="https://github.com/freedomofkeima/MoeFlow/blob/master/100_class_traning_note.md#list-of-characters" target="_blank">here</a>.</p>
+                <p class="lead">Note: This operation will be very slow (around 15 seconds) if there are a lot of characters in a single image!</p>
+            </div>
+
+	    <div class="col-md-8">
+                <h4 class="mb-3">Upload Image</h4>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="col-md-6 md-3">
+                        <input type="file" name="uploaded_image" accept="image/*">
+                        <small class="text-muted">Accepted mime-type: image/jpeg, image/png</small>
+                    </div>
+		    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Upload</button>
+                </form>
+	    </div>
+
+            {% if ori_name %}
+	    <hr>
+            <div class="row">
+                <div class="col-md-6 order-md-1">
+	            <h4 class="mb-3">Input:</h4>
+                    <img src="{{ url_path }}static/images/{{ ori_name }}" style="max-height:500px">
+                </div>
+
+                <div class="col-md-6 order-md-2">
+                    <h4 class="mb-3">Output:</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Character</th>
+                            <th>Prediction (Top-3)</th>
+                        </tr>
+                        {% for result in results %}
+                        <tr>
+                        <td><img src="{{ url_path }}static/images/{{ result['image_name'] }}" style="max-height:500px"></td>
+                        <td>
+                            <ul>
+                            {% for prediction in result['prediction'] %}
+                                <li>{{ prediction[0] }}</li>
+                            {% endfor %}
+                            </ul>
+			</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">Freedomofkeima Zone, 2017 - 2018.</p>
+            </footer>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
 
