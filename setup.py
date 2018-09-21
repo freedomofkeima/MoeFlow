@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 requires = [
     'aiofiles==0.3.2',
-    'attrs==17.3.0',
+    'attrs==17.4.0',
     'httptools==0.0.9',
     'jinja2==2.10',
     'MarkupSafe==1.0',
